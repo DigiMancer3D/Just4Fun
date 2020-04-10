@@ -1,0 +1,262 @@
+<meta name="viewport" content="width=device-width, initia-scale=0.5"></meta>
+<style type="text/css"> 
+body{
+  align:center; color:white;font-size:7vw;font-family: AppleGothic;word-wrap: break-word;}h3{font-size:11vw;javascript:allow; background-color:black;
+ } 
+ a{
+  Color: darkgreen; text-decoration: none;
+  } 
+ #clicker {
+  cursor: wait;
+ }
+ hr {
+  color:silver;
+  font-size: 103%;
+  border:dashed;
+ }
+ .blockspot {border-radius: 50px 50px 50px 50px;}
+ @media screen and (max-width: 9.9in){
+  body {  margin-left:1.5%; margin-right:1.5%;} 
+.title {font-size: 10vw; padding-top:7.5%; margin-top:7.75%;} 
+  .title2 {font-size: 7vw;} 
+  .dropup-content { font-size: 3.5vw;}
+.subtitle {font-size: 3.25vw;}
+.chapter {font-size: 5vw; color:darkgreen; margin-left :1.5vw;} 
+.content {font-size: 5vw; color:white; margin-left:3%; margin-right:3%;} 
+ .figure {font-size: 5.25vw; color:grey; margin-left:0.5%;/*margin-right:1%;*/}
+.fdata {font-size: 4.25vw; margin-left:1.75%;} 
+  .subsub {font-size:4.5vw;color:silver;margin-left:2%;padding-left:3%;}
+ .sum {color:lightgreen;margin-left:2.5%;padding-left:3.5%;}
+ }
+@media screen and (min-width: 10in) {
+  body{ background-image:url("https://spee.ch/9/NNN-gif-2"); background-repeat: repeat;background-size:13vw;}
+ .subsub {font-size:1.85vw;color:silver;margin-left:2.5%;padding-left:3.5%;}
+.world { margin-left:4.5%; margin-right:4.5%; margin-top:2.25%; background-color:black;border-radius: 50px 50px 150px 150px;} 
+ .title {font-size: 5.34vw;} 
+ .title2 {font-size: 4.34vw;} 
+ .dropup-content { font-size: 3.5vw;} 
+ .subtitle {font-size: 1vw; } 
+.chapter {font-size: 2.25vw; color:darkgreen;} 
+.content {font-size: 3vw; color:white; margin-left:5%;margin-right:10%;} 
+ .figure {font-size: 4vw; color:grey; margin-left:1%;/*margin-right:1.5%;*/} 
+ .fdata {font-size:2vw; margin-left 1.5%}
+ .sum {color:lightgreen;margin-left:3.5%;padding-left:5%;}
+ 
+} 
+</style>
+<body style="background-color:black;">
+<div class="world">
+ <div  min-width="99%" align="center">
+  <span class="title" align="center" style="margin-top:3.5%;padding-top:3.5%;padding-bottom:8%;"><b><i>J4F</i></b>
+  </span></br>
+ </div>
+<div align="center" style="padding-right:0.75vw;padding-left:0.75vw;">
+<span>
+<input id="data1" onclick="myFunction3();" style="font-size:90%;width:93%;margin-right:3.5%;margin-left:3.5%;text-align:center;" onfocus=" myFunction();" placeholder="Fill this bar with your input."></input></br>
+<h6 style="color:silver;margin-top:0%;margin-bottom:-2.5%;padding-top:-5%;padding-bottom:-5%;"><sup><sub>Click out of the input box and click back in the box to save the output.</br>At anytime you can scroll down and see the output given.</sub></sup></h6>
+ <hr>
+<div align="left" style="word-break: break-word;">
+<span class="subsub">Input-Length:<span id="SUML" class="sum">&nbsp</span></span>
+ <span class="subsub">Output-Length:<span id="SUML2" class="sum">&nbsp</span></span>
+ <span class="subsub">i-l*o-l:&nbsp<span id="Se" class="sum">&nbsp</span></span>
+ </br>
+ <span class="subsub">Derivitive (o-l,i-l):<span id="SUMs" class="sum">&nbsp</span></span>&nbsp&nbsp<span class="subsub">Derivitive-d(o-l,i-l/o-l)<sapn id="SUMs2" class="sum">&nbsp</span></span>&nbsp&nbsp<span class="subsub">d-d(o-l,i-l/o-l)<span id="SUMs3" class="sum">&nbsp</span></span>&nbsp&nbsp<span class="subsub">d-d(o-l,d-d i-l)<span id="SUMs4" class="sum"&nbsp></span></span>&nbsp&nbsp<span class="subsub">d-d(o-l,d-d i-l/d-d o-l)<span id="SUMs5" class="sum">&nbsp</span></span>
+ <span display="none" id="base1"></span>
+ <hr>
+<span class="subsub">Output-build:&nbsp<span id="build" class="sum">&nbsp</span></span>
+<span class="subsub">Output-rebuild:&nbsp<span id="bld" class="sum">&nbsp</span></span><hr>
+ <span class="subsub">o-b*o-l<span id="bld2" class="sum">&nbsp</span></span><hr>
+<span class="subsub">o-rb*o-l<span id="bld3" class="sum">&nbsp</span></span>
+<hr>
+<span id="blocker"></span>
+<hr>
+<span id="blocker2"></span>
+&nbsp&nbsp&nbsp
+<span id="blocker3"></span>
+<hr>
+<span id="demo8"></span>
+</br></br>
+ <hr>
+<span id="chain" style="display:none;"></span>
+<span id="demo2"></span>
+ </span>
+</div>
+<script>
+ /*setInterval(myFunction, 12500).value;*/
+ setInterval(ascii_to_hexa, 12500);
+function myFunction() {
+ var dd = new Date();
+  /*var nd = dd.getTime();*/ /*use dd.getTime() to set milsec based time in it's location*/
+ var n=[], f=[], nu=9, num=36; 
+ for (n = 1; n<0; n++) {  
+        f = Math.random().toString(nu).substring(2, n*n++);  
+    }  
+ var base1 = 0;
+ var SUMxxx = document.getElementById('data1').value;
+ var bse1 = new Number(base1);
+ 
+ var SUMxx = Number(SUMxxx.length) + Number(bse1);
+ document.getElementById('SUML').innerHTML = SUMxx;
+ var newSUe = SUMxx;
+ var SUe =  Number(newSUe);
+ var newSUMy = document.getElementById('SUML').innerHTML.length;
+ var SUMy = Number(newSUMy);
+ document.getElementById('SUML2').innerHTML = SUMy;
+ var Sue = Number(SUMy);
+ document.getElementById('Se').innerHTML = SUe*SUMy;
+ var ssss = document.getElementById('Se').innerHTML;
+ var SUMss = data1.value.substring(SUMy, SUe);
+ document.getElementById('SUMs').innerHTML = SUMss.length;
+ var sssss = SUMss.length;
+ var SUMss2 = data1.value.substring(SUMy, SUe).substring(SUMy,SUe/SUMy);
+ document.getElementById('SUMs2').innerHTML = SUMss2.length;
+ var SUMss3 = SUMss2.substring(SUMy, SUe).substring(SUMy,SUe/SUMy);
+ document.getElementById('SUMs3').innerHTML = SUMss3.length;
+ var suu = SUMss3.length;
+ var suu2 = suu.length;
+ var SUMss4 = SUMss3.substring(suu2, suu);
+ document.getElementById('SUMs4').innerHTML = SUMss4.length;
+ var suu3 = SUMss4.length;
+ var SUMss5 = SUMss3.substring(suu2, suu).substring(suu2,suu/suu3);
+ document.getElementById('SUMs5').innerHTML = SUMss5.length;
+ var a9 = SUML.innerHTML;
+ var a8 = SUML2.innerHTML;
+ var a7 = Number(a8);
+ var a6 = Number(a9);
+ var b1 = (a7 + a6);
+ var b21 = Se.innerHTML;
+ var b22 = Number(b21);
+ var b2 = (b1 + b22);
+ var b31 =  SUMs.innerHTML;
+ var b32 = Number(b31);
+ var b3 = (b2 + b32);
+ var b41 = SUMs2.innerHTML;
+ var b42 = Number(b41);
+ var b4 = (b3 + b42);
+ var b51 = SUMs3.innerHTML;
+ var b52 = Number(b51);
+ var b5 = (b4 + b52);
+ var b61 = SUMs4.innerHTML;
+ var b62 = Number(b61);
+ var b6 = (b5 + b62);
+ var b71 = SUMs5.innerHTML;
+ var b72 = Number(b71);
+ var b7 = (b6 + b72);
+ 
+  document.getElementById('build').innerHTML = b7;
+ var bldr = Number(build.innerHTML);
+ var bldr1 = bldr*Sue;
+ document.getElementById('bld').innerHTML = bldr1;
+ var bldrr = Math.pow(bldr,Sue);
+ document.getElementById('bld2').innerHTML = bldrr;
+ var bldr2 = Math.abs(bldrr*Sue);
+ document.getElementById('bld3').innerHTML = bldr2;
+ 
+ var blocker = SUML.innerHTML + " " + SUML2.innerHTML + " " + b7 + " " + bldr1 + " " + bldrr + " " + bldr2;
+ 
+ var wrapperxx = Math.pow(bldr2,bldrr);
+ var wrapx = Number(wrapperxx);
+ 
+  setInterval(myFunction, 0);
+ document.getElementById('blocker').innerHTML = blocker;
+ 
+ var blocker21 = SUe + SUMy + b7 + bldr1 + bldrr + bldr2;
+ var blocker22 = Number(blocker21);
+ var blocker2 = blocker22*(SUMy*SUe);
+ document.getElementById('blocker2').innerHTML = blocker2;
+ var kicker2 = ascii_to_hexa(blocker.innerHTML);
+ var kicker3 = window.btoa(blocker2.innerHTML);
+ var kicker4 = window.btoa(kicker2);
+ document.getElementById('blocker3').innerHTML = blocker22 + " " + kicker2 + "</br>" + kicker3 + " " + kicker4;
+
+ 
+ var comboblock = document.getElementById('data1').value + "" + blocker3.innerHTML;
+
+ document.getElementById('chain').innerHTML = comboblock;
+
+
+ var ar = Array.from(document.getElementById('data1').value);
+document.getElementById("demo8").innerHTML = ar.innerHTML;
+ 
+ function bin2hex(s){  
+    // Converts the binary representation of data to hex    
+    //   
+    // version: 812.316  
+    // discuss at: http://phpjs.org/functions/bin2hex  
+    // +   original by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)  
+    // +   bugfixed by: Onno Marsman  
+    // +   bugfixed by: Linuxworld  
+    // *     example 1: bin2hex('Kev');  
+    // *     returns 1: '4b6576'  
+    // *     example 2: bin2hex(String.fromCharCode(0x00));  
+    // *     returns 2: '00'  
+    var v,i, f = 0, a = [];  
+    s += '';  
+    f = s.length;  
+      
+    for (i = 0; i<f; i++) {  
+        a[i] = s.charCodeAt(i).toString(16).replace(/^([\da-f])$/,"0$1");  
+    }  
+      
+    return a.join('');  
+}   
+}
+
+ function myFunction3() {
+var newnew2 = Math.random().toString(32).substring(3,9) + " " + document.getElementById('chain').innerHTML;
+ var dlt = window.btoa(document.getElementById('demo2').innerHTML);
+ document.getElementById('demo2').innerHTML = "&nbspBlocked Data:&nbsp</br>" + Math.random(dlt).toString(32).substring(3, Math.random(dlt).toString(9).substring(3, 9)) + btoa(newnew2) + "</br></br>Blocked DLT:&nbsp</br>" + window.ascii_to_hexa(dlt);
+  document.getElementById('data1').value = "";
+ 
+}
+ 
+ function ascii_to_hexa(str1)
+  {
+	var arr1 = [];
+	for (var n1 = 0, l1 = str1.length; n1 < l1; n1 ++) 
+     {
+		var hex1 = Number(str1.charCodeAt(n1)).toString(16);
+		arr1.push(hex1);
+	 }
+   
+	return arr1.join('');
+   
+  }
+console.log(ascii_to_hexa(ascii_to_hexa(data1.value)));
+ 
+ 
+ /*
+function jenkins_one_at_a_time_hash(const uint8_t* key, size_t length) {
+var  uint32_t
+ var size_t, i = 0;
+  uint32_t, hash = 0;
+  while (i != length) {
+    hash += key[i++];
+    hash += hash << 10;
+    hash ^= hash >> 6;
+  }
+  hash += hash << 3;
+  hash ^= hash >> 11;
+  hash += hash << 15;
+  return hash;
+}*/
+ 
+ </script>
+<!--I need a hex-2-ascii so I can reverse these bin-2-hex with ascii input-->
+<!--
+<script>
+<button target="_blank" onclick="https://itty.bitty.site/#/'+Buffer.from(lzma.compress(block, 9)).toString('base64')">Save</button>
+</br>
+<script>
+ mySave() {
+  document.getElementById('block').innerHTML.tosubstring("'https://itty.bitty.site/#/'+Buffer.from(lzma.compress("Hello World", 9)).toString('base64')")
+ }
+</script>
+-->
+
+ <div align="center"> <p style="background-color:black;color:green;" ><sub><sup>Click & Hold for highlight to copy.<a href="http://3dthe.ninja" target="_top" ></sup></br><sub><sup>Сделано<b><i> 3D</b></i> 2018</sup></sub></a><hr><a href="https://codepen.io/digimancer3d/pen/jQGLwr" target="_top" ><sub><sup >Click to view this repo on Codepen.</sup></sub></a></sub></p></div><hr>
+</body >
+<footer>
+<div align="center" width="100%" style="font-size:3.34vw; background-color:black"><h4 style="color :Orange" >If you liked this build please consider donating cryptocurrency to the crafter by using the following crypto-addresses, thank you.</h4><sub>₿://31saqmrKAUdLr6Ta3CYzXsYpzqELsJ5etJ</br>Ł://LYDeUmzzyEqpugYjaavZYYM8yXpXJ1VrbR</br>Ð://D9F4zdgHE8Fb7mpWQ2BNFQVvC5ocJxWEjr</br>Ξ://0x38891a281fD0fc68eDFa434999F5eeA77b06589B</sub></br><hr>
+</div>
+</footer>
