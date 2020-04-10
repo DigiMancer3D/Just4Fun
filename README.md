@@ -1,6 +1,6 @@
 # Just4Fun: Numbers as you type
 
-### &nbsp; &nbsp; Getting information on user input is sometimes very important so why not gain data while the user is typing. This will allow people to gain data on their input right on their screen. This shows multipule derivatives of the input including.
+### &nbsp; &nbsp; Getting information on user input is sometimes very important so why not gain data while the user is typing. This will allow people to gain data on their input right on their screen. This shows multipule derivatives of the input and with every click of the input, the previous data is placed in a DLT.
 
 ## This will run on <a href="https://itty.bitty.site" target="_blank">Itty Bitty</a> and the example is ran off ittybitty.
 
